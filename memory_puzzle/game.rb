@@ -16,13 +16,13 @@ class Game
   end
 
   def make_guess(pos, player)
+    current_card = @board[pos]
     if @previous_guess_pos 
-      current_card = @board[pos]
       prev_car = @board[@previous_guess_pos]
       if current_card == prev_car 
         current_card.reveal?
         prev_car.reveal?
-        player.receive_match(@previous_guess_pos, pos)
+        player.receive_match(@previous_guess_pos, pos, current_card.to_s)
       else 
         current_card.hide
         prev_car.hide
